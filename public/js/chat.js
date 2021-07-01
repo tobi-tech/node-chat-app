@@ -32,13 +32,6 @@ const autoscroll = () => {
     if (containerHeight - newMessageHeight <= scrollOffset + 30) {
         $messages.scrollTop = $messages.scrollHeight
     }
-
-    console.log("containerHeight: " + (containerHeight - newMessageHeight))
-    console.log("scrollOffset: " + scrollOffset)
-
-
-    //$messages.scrollTop = $messages.scrollHeight
-
 }
 
 //listen for the message event on the server

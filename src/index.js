@@ -4,7 +4,7 @@ const socketio = require("socket.io")
 const path = require("path")
 const Filter = require("bad-words")
 const { generateMessage, generateLocationMessage } = require("./utils/messages")
-const { addUser, removeUser, getUser, getUsersInRoom } = require("./utils/users")
+const { addUser, removeUser, getUser, getUsersInRoom, getActiveRooms } = require("./utils/users")
 
 const app = express()
 const server = http.createServer(app)
@@ -66,6 +66,11 @@ io.on("connection", (socket) => {
             io.to(user.room).emit("locationMessage", generateLocationMessage(user.username, `https://google.com/maps?q=${location.latitude},${location.longitude}`))
             callback()
         }
+    })
+
+    //listen for acitveRooms event on the index page
+    socket.on("activeRooms", (callback) => {
+        callback(getActiveRooms())
     })
 
     //emits a message to all users if a user disconnect from the chat room

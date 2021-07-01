@@ -83,6 +83,14 @@ button:disabled {
     width: 100%;
 }
 
+.centered-form__active-rooms select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    margin-bottom: 16px;
+}
+
 /* Chat Page Layout */
 
 .chat {
